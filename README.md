@@ -42,6 +42,14 @@ RSpec testing suite is utilized for testing this application.
 
 ## DB Schema
 
+![database visual schema](https://github.com/kon-ham/ctd_inventory_tracker/blob/main/db_schema_visual.png?raw=true)
+
+`A user has many items, and items belong to a user`
+
+`A user has an email, password and User ID`
+
+`An item has a name, quantity, and Item ID`
+
 ## Technologies Used
 
 - Ruby
