@@ -1,5 +1,4 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Welcome <%= current_user.email %>!</h1>
 
 <% if current_user %>
   Logged in as <%= current_user.email %>.
@@ -9,4 +8,35 @@
   <%= link_to "Sign Up", signup_path %> 
 
 <% end %>
-<p><%= notice %></p>
+
+<p id="notice"><%= notice %></p>
+
+<h2>Your Inventory Items:</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.user_id %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>
