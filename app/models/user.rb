@@ -6,5 +6,6 @@ class User < ApplicationRecord
   has_many :items
 
   # Data Validations
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, presence: true
+  validates :password, presence: true
 end
