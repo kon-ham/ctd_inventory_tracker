@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
-    # Table Relationship
-    belongs_to :user
+  # Table Relationship
+  belongs_to :user
 
-    # Data validations
-    validates :quantity, presence: true, numericality: true
-    validates :name, presence: true
+  # Data Validations
+  validates :name, presence: true
+  validates :quantity, presence: true, numericality: true
 end
