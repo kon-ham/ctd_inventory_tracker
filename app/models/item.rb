@@ -4,5 +4,5 @@ class Item < ApplicationRecord
 
     # Data validations
     validates :quantity, presence: true, numericality: true
-    validates :string, presence: true
+    validates :name, presence: true
 end
