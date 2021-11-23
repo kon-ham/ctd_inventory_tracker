@@ -4,7 +4,8 @@ RSpec.describe "items/edit", type: :view do
   before(:each) do
     @item = assign(:item, Item.create!(
       name: "MyString",
-      quantity: 1
+      quantity: 1,
+      user: nil
     ))
   end
 
@@ -16,6 +17,8 @@ RSpec.describe "items/edit", type: :view do
       assert_select "input[name=?]", "item[name]"
 
       assert_select "input[name=?]", "item[quantity]"
+
+      assert_select "input[name=?]", "item[user_id]"
     end
   end
 end

@@ -1,6 +1,19 @@
-<p id="notice"><%= notice %></p>
+<h1>Welcome to your InventoryTracker, <%= current_user.email %>!</h1>
 
-<h1>Items</h1>
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to 'Change Your User Details', edit_user_path(:id => current_user.id) %> or 
+  <%= link_to "Log Out", logout_path %>
+<% else %>
+  <%= link_to "Log In", login_path %> or
+  <%= link_to "Sign Up", signup_path %> 
+
+<% end %>
+
+<p id="notice"><%= notice %></p><br><br>
+
+<h2>Your Inventory Items:</h2>
+
 
 <table>
   <thead>
@@ -27,3 +40,5 @@
 <br>
 
 <%= link_to 'New Item', new_item_path %>
+
+<p>You'll be sent an email when your item quantity reaches zero...</p>
