@@ -1,0 +1,13 @@
+Your inventory item has reached zero
+
+Inventory details<br>
+--------------------------
+
+The Following Inventory Items Have Reached Zero: 
+<% @user.items.each do |item| %>
+  <% if item.count < 1 %>
+    --------------------------
+    Item: <%= item %>
+    Quantity: <%= item.quantity %>
+    --------------------------
+  <% end %>
