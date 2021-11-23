@@ -10,11 +10,12 @@
     </p>
     <p>The Following Inventory Items Have Reached Zero:</p> 
     <% @user.items.each do |item| %>
-      <% if item.count < 1 %>
+      <% if item.quantity < 1 %>
         <p>--------------------------</p>
         <p>Item: <%= item %></p>
         <p>Quantity: <%= item.quantity %></p>
         <p>--------------------------</p>
       <% end %>
+    <% end %>
   </body>
 </html>
