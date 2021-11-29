@@ -73,9 +73,9 @@ Rails.application.configure do
   :authentication => :plain,
   :address => "smtp.mailgun.org",
   :port => 587,
-  :domain => "MYDOMAIN.mailgun.org",
-  :user_name => "postmaster@MYDOMAIN.mailgun.org",
-  :password => "MYPASSWORD"
+  :domain => ENV["mailgun_domain"],
+  :user_name => ENV["mailgun_user"],
+  :password => ENV["mailgun_pass"]
 }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
