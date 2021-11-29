@@ -41,10 +41,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :authentication => :plain,
-    :address => "smtp.mailgun.org",
+    :address => "smtp.gmail.com",
     :port => 587,
-    :domain => ENV["mailgun_domain"],
-    :password => ENV["mailgun_api_key"]
+    :user_name => ENV["smtp_user_name"],
+    :password => ENV["smtp_password"]
 }
 
   # Print deprecation notices to the Rails logger.
