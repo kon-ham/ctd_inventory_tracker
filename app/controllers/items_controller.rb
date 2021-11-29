@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.update(item_params) && @item.quantity == 0
         UserMailer.with(user: @current_user).inventory_quantity_zero.deliver_now
-        format.html { redirect_to @item, notice: "Item quantity has reached zero. An email has been sent to your account." }
+        format.html { redirect_to @item, notice: "Item quantity has reached zero or negative. An email has been sent to your account." }
         format.json { render :show, status: :ok, location: @item }
       elsif @item.update(item_params)
         format.html { redirect_to @item, notice: "Item was successfully updated." }
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: "Item was successfully destroyed." }
+      format.html { redirect_to root_url, notice: "Item was successfully destroyed." }
       format.json { head :no_content }
     end
   end
