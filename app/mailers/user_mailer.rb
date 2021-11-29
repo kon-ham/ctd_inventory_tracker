@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default :from => 'me@example.com'
+  default :from => ENV["mailgun_user"]
 
   def inventory_quantity_zero
     @user = params[:user]
