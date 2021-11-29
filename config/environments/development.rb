@@ -38,13 +38,14 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :authentication => :plain,
+    :authentication => "plain",
     :address => "smtp.gmail.com",
     :port => 587,
     :user_name => ENV["smtp_user_name"],
-    :password => ENV["smtp_password"]
+    :password => ENV["smtp_password"],
+    :enable_starttls_auto => true
 }
 
   # Print deprecation notices to the Rails logger.
