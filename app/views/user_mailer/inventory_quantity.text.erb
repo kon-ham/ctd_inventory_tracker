@@ -7,7 +7,7 @@ The Following Inventory Items Have Reached Zero:
 <% @user.items.each do |item| %>
   <% if item.count < 1 %>
     --------------------------
-    Item: <%= item %>
+    Item: <%= item.name %>
     Quantity: <%= item.quantity %>
     --------------------------
   <% end %>
