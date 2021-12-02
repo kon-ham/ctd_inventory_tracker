@@ -101,14 +101,6 @@ RSpec.describe "/items", type: :request do
         expect(response).to redirect_to(item_url(item))
       end
     end
-
-    context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        item = Item.create! valid_attributes
-        patch item_url(item), params: { item: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
   end
 
   describe "DELETE /destroy" do
