@@ -26,8 +26,8 @@ RSpec.describe "/items", type: :request do
   }}
 
   let(:invalid_attributes) {{
-    name: 1234,
-    quantity: 'five',
+    name: "",
+    quantity: "",
     user_id: @user.id
   }}
 
@@ -77,22 +77,26 @@ RSpec.describe "/items", type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post items_url, params: { item: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to_not be_successful
       end
     end
   end
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) {{
+        name: "Bobette's McBobble Heads",
+        quantity: 99
+      }}
 
       it "updates the requested item" do
         item = Item.create! valid_attributes
         patch item_url(item), params: { item: new_attributes }
         item.reload
-        skip("Add assertions for updated state")
+        expect(item.name).to eq("Bobette's McBobble Heads")
+        expect(item.quantity).to eq(99)
+        expect(item.name).to_not eq("Bob's McBobble Heads")
+        expect(item.quantity).to_not eq(10)
       end
 
       it "redirects to the item" do
