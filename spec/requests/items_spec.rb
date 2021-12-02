@@ -41,15 +41,16 @@ RSpec.describe "/items", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_item_url
-      expect(response.status).to eq(302)
+      get "/items/new"
+      binding.pry
+      expect(response).to be_successful
     end
   end
 
   describe "GET /edit" do
     it "render a successful response" do
       item = Item.create! valid_attributes
-      get edit_item_url(item)
+      get "/items/#{item.id}/edit"
       expect(response).to be_successful
     end
   end
