@@ -34,7 +34,7 @@ RSpec.describe "/items", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       item = Item.create! valid_attributes
-      get item_url(item)
+      get "/items/#{item.id}"
       expect(response).to be_successful
     end
   end
