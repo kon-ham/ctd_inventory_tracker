@@ -31,14 +31,6 @@ RSpec.describe "/items", type: :request do
     user_id: @user.id
   }}
 
-  describe "GET /" do
-    it "renders a successful response" do
-      Item.create! valid_attributes
-      get root_path
-      expect(response).to be_successful
-    end
-  end
-
   describe "GET /show" do
     it "renders a successful response" do
       item = Item.create! valid_attributes
