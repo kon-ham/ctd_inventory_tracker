@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
-    @item = @current_user.items.new
+    @item = current_user.items.new
   end
 
   # GET /items/1/edit
@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
-    @item = @current_user.items.new(item_params)
+    @item = current_user.items.new(item_params)
 
     respond_to do |format|
       if @item.save
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params) && @item.quantity < 1
-        UserMailer.with(user: @current_user).inventory_quantity_zero.deliver_now
+        UserMailer.with(user: current_user).inventory_quantity_zero.deliver_now
         format.html { redirect_to @item, notice: "Item quantity has reached zero or negative. An email has been sent to your account." }
         format.json { render :show, status: :ok, location: @item }
       elsif @item.update(item_params)
