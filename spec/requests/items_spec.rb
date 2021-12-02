@@ -31,10 +31,10 @@ RSpec.describe "/items", type: :request do
     user_id: @user.id
   }}
 
-  describe "GET /index" do
+  describe "GET /" do
     it "renders a successful response" do
       Item.create! valid_attributes
-      get items_url
+      get root_path
       expect(response).to be_successful
     end
   end
