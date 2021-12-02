@@ -74,11 +74,6 @@ RSpec.describe "/items", type: :request do
           post items_url, params: { item: invalid_attributes }
         }.to change(Item, :count).by(0)
       end
-
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post items_url, params: { item: invalid_attributes }
-        expect(response).to_not be_successful
-      end
     end
   end
 
